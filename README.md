@@ -1,48 +1,26 @@
-# Full Stack TypeScript [![CI](https://github.com/mike-north/full-stack-ts/actions/workflows/ci.yml/badge.svg)](https://github.com/mike-north/full-stack-ts/actions/workflows/ci.yml)
+# Full Stack TypeScript
 
-Mike North's Full Stack TypeScript course
+Forked from https://github.com/mike-north/full-stack-ts
 
-- Video: [Frontend Masters](https://frontendmasters.com/workshops/fullstack-typescript/)
-- Course website: [TypeScript Training: Full Stack TypeScript](https://www.typescript-training.com/course/full-stack-typescript)
+This repo contains completed exercises from Mike North's [Full Stack TypeScript](https://frontendmasters.com/workshops/fullstack-typescript/) course.
 
-## Setup
+The project consists of a monorepo containing a React client with an Apollo GraphQL backend, backed by a local json db.
 
-First, if you want to ensure you're using the correct Node.js and package manager versions, [install Volta](http://volta.sh)
+Running `yarn dev` starts both the client app and the GraphQL server.
 
-```sh
-# install Volta
-curl https://get.volta.sh | bash
+## Notes
 
-# install Node
-volta install node
-```
+### GraphQL
 
-Then, check out a local copy of this repository
+GraphQL `queries` fetch data, `mutations` update (synonymous with POST/PUT). For each entity in the schema we provide a resolver to return the data when queried.
 
-```sh
-git clone git@github.com:mike-north/full-stack-ts
-cd full-stack-typescript
-```
+- GraphQL schema provides the graph schema and the types for client/server
+- TS types as well as accessor hooks etc are generated using `codegen`.
+- GraphQL sandbox studio can be used to interrogate the server for debugging.
+- In queries use `__typename` to debug the returned types. e.g. `query ExampleQuery { trends { __typename } }`
+- Be mindful of caching performance - the bigger the schema the less confidence you will have about side effects.
 
-Next, install the project dependencies
-
-```sh
-yarn
-```
-
-Build the project for the first time
-
-```sh
-yarn build
-```
-
-And finally, start the project
-
-```sh
-yarn dev
-```
-
-After the client and server build processes complete, you should see an "imitation Twitter" running on [http://localhost:1234](http://localhost:1234).
+See docs https://www.apollographql.com/docs/
 
 ## Legal
 
